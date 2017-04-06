@@ -8,17 +8,20 @@ let getAll =  function(req, res) {
 }
 
 let createRestaurant = function(req, res) {
+  console.log("isudhiasdihasidhiao");
   db.create({
     name: req.body.name,
     owner: req.body.owner,
     address: req.body.address,
     open_status: req.body.open_status
-  }, function(err, data) {
-    if (err) {
-      res.send(err)
-    } else {
-      res.send(data)
-    }
+  }).then(function(resto) {
+    console.log(resto);
+    res.send(resto)
+  }).catch(function(err) {
+    res.send({
+      message: "error sesuatu",
+      error: err
+    })
   })
 }
 
