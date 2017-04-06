@@ -10,7 +10,7 @@ with only npm:
 ```
 
 $ npm install
-$ npm start
+$ npm run dev
 
 ```
 ## Authors

@@ -1,24 +1,27 @@
 const db = require('../models/food');
 
 
-
 let getAll =  function(req, res) {
   db.find(function(err, foods) {
     res.send(foods)
   })
 }
 
+
 let createFood = function(req, res) {
   db.create({
     name: req.body.name,
     price: req.body.price,
-    expired_date: req.body.expired_date,
-  }, function(err, data) {
-    if (err) {
-      res.send(err)
-    } else {
-      res.send(data)
-    }
+    expired_date: req.body.expired_date
+  })
+  .then((food)=>{
+    res.send(food)
+  })
+  .catch((err)=>{
+    res.send({
+      message: "error cuy",
+      error: err
+    })
   })
 }
 
